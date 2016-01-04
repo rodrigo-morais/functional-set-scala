@@ -77,5 +77,17 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  
+  test("intersec contains the elements which exist in both sets") {
+    new TestSets {
+      val s11 = intersect(s1, s1)
+      assert(contains(s11, 1), "Union 1")
+      assert(!contains(s11, 2), "Union 2")
+      
+      val s12 = intersect(s1, s2)
+      assert(!contains(s12, 1), "Union 1")
+      assert(!contains(s12, 2), "Union 2")
+    }
+  }
 
 }

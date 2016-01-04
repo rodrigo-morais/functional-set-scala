@@ -27,15 +27,13 @@ object FunSets {
    * Returns the union of the two given sets,
    * the sets of all elements that are in either `s` or `t`.
    */
-    def union(s: Set, t: Set): Set = (i : Int) => {
-      s(i) || t(i)
-    }
+    def union(s: Set, t: Set): Set = (i : Int) => s(i) || t(i)
   
   /**
    * Returns the intersection of the two given sets,
    * the set of all elements that are both in `s` and `t`.
    */
-    def intersect(s: Set, t: Set): Set = ???
+    def intersect(s: Set, t: Set): Set = (i: Int) => s(i) && t(i)
   
   /**
    * Returns the difference of the two given sets,
