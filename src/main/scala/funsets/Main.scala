@@ -24,4 +24,10 @@ object Main extends App {
   
   println(contains(intersect(s2,s3), 2))
   println(contains(intersect(s2,s3), 3))
+  
+  println("Diff")
+  println(contains(diff(s2,s2), 2))
+  
+  println(contains(diff(s2,s3), 2))
+  println(contains(diff(s2,s3), 3))
 }
