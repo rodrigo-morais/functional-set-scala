@@ -81,27 +81,43 @@ class FunSetSuite extends FunSuite {
   test("intersect contains the elements which exist in both sets") {
     new TestSets {
       val s11 = intersect(s1, s1)
-      assert(contains(s11, 1), "Union 1")
-      assert(!contains(s11, 2), "Union 2")
+      assert(contains(s11, 1), "Intersection 1")
+      assert(!contains(s11, 2), "Intersection 2")
       
       val s12 = intersect(s1, s2)
-      assert(!contains(s12, 1), "Union 1")
-      assert(!contains(s12, 2), "Union 2")
+      assert(!contains(s12, 1), "Intersection 1")
+      assert(!contains(s12, 2), "Intersection 2")
     }
   }
   
   test("diff contains the elements which exist in first set and not exist in second sets") {
     new TestSets {
       val s11 = diff(s1, s1)
-      assert(!contains(s11, 1), "Union 1")
+      assert(!contains(s11, 1), "Diff 1")
       
       val s12 = diff(s1, s2)
-      assert(contains(s12, 1), "Union 1")
-      assert(!contains(s12, 2), "Union 2")
+      assert(contains(s12, 1), "Diff 1")
+      assert(!contains(s12, 2), "Diff 2")
       
       val s21 = diff(s2, s1)
-      assert(!contains(s21, 1), "Union 1")
-      assert(contains(s21, 2), "Union 2")
+      assert(!contains(s21, 1), "Diff 1")
+      assert(contains(s21, 2), "Diff 2")
+    }
+  }
+  
+  test("filter elements from set") {
+    new TestSets {
+      val s = filter(s1, x => x == 1)
+      assert(contains(s, 1), "Filter 1")
+      assert(!contains(s, 2), "Filter 1")
+      
+      val s12 = filter(union(s1, s2), x => x > 1)
+      assert(!contains(s12, 1), "Filter 1")
+      assert(contains(s12, 2), "Filter 2")
+      
+      val s23 = filter(union(s2, s3), x => x / 3 == 1)
+      assert(!contains(s23, 1), "Filter 1")
+      assert(contains(s23, 3), "Filter 3")
     }
   }
 

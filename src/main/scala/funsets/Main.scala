@@ -30,4 +30,10 @@ object Main extends App {
   
   println(contains(diff(s2,s3), 2))
   println(contains(diff(s2,s3), 3))
+  
+  println("Filter")
+  println(contains(filter(s2, x => x == 2), 2))
+  
+  val s23 = filter(union(s2, s3), x => x / 3 == 1)
+  println(contains(s23, 3))
 }
