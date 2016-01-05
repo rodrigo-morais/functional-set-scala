@@ -36,4 +36,8 @@ object Main extends App {
   
   val s23 = filter(union(s2, s3), x => x / 3 == 1)
   println(contains(s23, 3))
+  
+  println("Forall")
+  println(forall(union(s2, union(s3, s4)), x => x > 1))
+  println(forall(union(s3, s4), x => x > 2))
 }

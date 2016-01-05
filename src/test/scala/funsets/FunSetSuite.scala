@@ -120,5 +120,15 @@ class FunSetSuite extends FunSuite {
       assert(contains(s23, 3), "Filter 3")
     }
   }
+  
+  test("forall to go through the set") {
+    new TestSets {
+      val su1 = union(union(s1, s2), s3)
+      assert(forall(su1, x => x > 0), "Forall bigger than 0")
+      
+      val su2 = union(s2, s3)
+      assert(forall(su2, x => x > 1), "Forall bigger than 1")
+    }
+  }
 
 }
