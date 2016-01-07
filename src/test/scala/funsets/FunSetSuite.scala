@@ -130,5 +130,30 @@ class FunSetSuite extends FunSuite {
       assert(forall(su2, x => x > 1), "Forall bigger than 1")
     }
   }
+  
+  test("exists element in set") {
+    new TestSets {
+      val si1 = intersect(s1, s2)
+      assert(!exists(si1, x => x > 0), "Not exist to empty set")
+      
+      val su1 = union(s1, s2)
+      assert(exists(su1, x => x > 1), "Exist to set with (1, 2)")
+      
+      assert(!exists(su1, x => x > 3), "Not exist to set with (1, 2)")
+      
+    }
+  }
+  
+  test("map a new set passing a function") {
+    new TestSets {
+      assert(contains(map(s2, x => x * 2), 4), "Set with 2, and function x * 2 have to have 4")
+      
+      assert(contains(map(s1, x => x - 1), 0), "Set with 1, and function x - 2 have to have 0")
+      
+      val su1 = union(s1, s2)
+      assert(contains(map(su1, x => x * x), 1), "Set with (1, 2), and function x * x have to have 1")
+      assert(contains(map(su1, x => x * x), 1), "Set with (1, 2), and function x * x have to have 4")
+    }
+  }
 
 }
